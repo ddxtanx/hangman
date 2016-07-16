@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 int main(void){
 printf("Installing hangman onto system\n");
 printf("Creating hangman binary\n");

@@ -9,5 +9,5 @@ system("cp ./hangman ~/");
 printf("Adding command to bash_profile\n");
 system("echo 'hangman(){ ~/hangman } echo \"use hangman to play hangman\"'>> ~/.bash_profile");
 printf("Finished!\n");
-printf("Input hangman into your console to play!\n");
+printf("Now just close and re-open your console and then input hangman into your console to play!\n");
 }

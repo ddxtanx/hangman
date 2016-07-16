@@ -1,5 +1,7 @@
 # hangman
 Command Line Hangman/Word Guessing game.
+# Support
+As of now, this game is only supported on UNIX based systems
 # Usage
 First, download the source code to your system
 

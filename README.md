@@ -9,7 +9,7 @@ Third, cd into the source code directory
 
 Fourth, run these commands
 ```bash
-make
+clang install.c -o install
 ./install
 ```
 Fifth, run

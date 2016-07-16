@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <cs50.h>
 #include <time.h>
 #include <string.h>
 #include <regex.h>
@@ -42,7 +41,7 @@ int main(void){
     int won = 0;
     char let;
     int randint = random_number(0, 274908);
-    string word = words[randint];
+    char* word = words[randint];
     int lives = 11;
     int bools[strlen(word)];
     int index = 0;
@@ -58,10 +57,10 @@ int main(void){
           printf(" _");
         }
       }printf("\n");
-      char* c;
+        char c[1];
       do{
-        printf("Please enter a letter\n");
-        c = GetString();
+          printf("Please enter a letter\n");
+          scanf("%s", c);
       }while((strcmp(c, "")==0)||strlen(c)>1);
       for(int x = 0; x<strlen(word); x++){
         let = word[x];
@@ -126,14 +125,16 @@ int main(void){
     }
     fclose(fp);
     printf("Would you like to know the definition of %s?(Y for yes, N for no)\n", word);
-    char ans = GetChar();
-    if(ans=='y'||ans=='Y'){
+      char ans[1];
+      scanf("%s", ans);
+    if(strcmp(ans, "y")==0||strcmp(ans, "Y")==0){
       system("open 'def.html'");
     }
 
     printf("Would you like to play again? (Y for yes, N for no)\n");
-    char ans2 = GetChar();
-    if(ans2=='y'||ans2=='Y'){
+      char ans2[1];
+      scanf("%s", ans2);
+    if(strcmp(ans2, "y")==0||strcmp(ans2, "Y")==0){
       doagain = 1;
     } else{
       doagain=0;

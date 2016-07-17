@@ -10,6 +10,5 @@ printf("Adding command to bash_profile\n");
 system("echo 'hangman(){ \n \t~/hangman \n}' >> ~/.bash_profile");
 system("echo 'echo \" hangman to play hangman \"' >> ~/.bash_profile");
 printf("Finished!\n");
-system("killall Terminal");
-system("open -a 'Terminal'");
+printf("Now just restart your console and you will be able to play hangman!");
 }

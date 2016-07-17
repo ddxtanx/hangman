@@ -94,40 +94,40 @@ int main(void){
     } else{
       printf("Aww good try, the word was %s, wanna play again?\n", word);
     }
-    CURL *curl;
-    FILE *fp;
-    CURLcode curl_res;
-    char *url = concat(concat("www.dictionary.com/browse/", word), "?s=t");
-    char outfilename[FILENAME_MAX] = "def.html";
-    curl = curl_easy_init();
-    if (curl) {
-      fp = fopen(outfilename,"wb");
-      curl_easy_setopt(curl, CURLOPT_URL, url);
-      curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
-      curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
-      curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp);
-      curl_res = curl_easy_perform(curl);
-      /* always cleanup */
-      curl_easy_cleanup(curl);
-      fclose(fp);
-    }
-    else
-    {
-      printf("cURL error.\n");
-    }
-
-    fp = fopen(outfilename, "r");
-    char buffer[10000];
-    if(fp!=NULL){
-      fread(buffer, 10000, 1, fp);
-    } else{
-      printf("Woops\n");
-    }
-    fclose(fp);
     printf("Would you like to know the definition of %s?(Y for yes, N for no)\n", word);
       char ans[1];
       scanf("%s", ans);
     if(strcmp(ans, "y")==0||strcmp(ans, "Y")==0){
+        CURL *curl;
+        FILE *fp;
+        CURLcode curl_res;
+        char *url = concat(concat("www.dictionary.com/browse/", word), "?s=t");
+        char outfilename[FILENAME_MAX] = "def.html";
+        curl = curl_easy_init();
+        if (curl) {
+            fp = fopen(outfilename,"wb");
+            curl_easy_setopt(curl, CURLOPT_URL, url);
+            curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
+            curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
+            curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp);
+            curl_res = curl_easy_perform(curl);
+            /* always cleanup */
+            curl_easy_cleanup(curl);
+            fclose(fp);
+        }
+        else
+        {
+            printf("cURL error.\n");
+        }
+        
+        fp = fopen(outfilename, "r");
+        char buffer[10000];
+        if(fp!=NULL){
+            fread(buffer, 10000, 1, fp);
+        } else{
+            printf("Woops\n");
+        }
+        fclose(fp);
       system("open 'def.html'");
     }
 

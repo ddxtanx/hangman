@@ -1,20 +1,21 @@
 import os
 def cinstall():
     if not(os.path.isfile("./curl-7.50.1.tar.gz")==True) and not(os.path.isdir("./curl-7.50.1")): 
-        print "Download curl binary from https://curl.haxx.se/download/curl-7.50.1.zip"
-        os.system("wget https://curl.haxx.se/download/curl-7.50.1.tar.gz")
-        print "UnTarring curl binary"
-        os.system("tar -xvf curl-7.50.1.tar.gz")
+        print "Downloading curl binary from https://curl.haxx.se/download/curl-7.50.1.zip"
+        os.system("wget https://curl.haxx.se/download/curl-7.50.1.zip")
+        print "Unzipping curl binary"
+        os.system("unzip curl-7.50.1.zip")
     print "Printing working directory"
     os.system("pwd")
     print "Configuring"
-    os.system("./curl-7.50.1/configure")
+    os.system("cd curl-7.50.1 && ./configure")
     print "make"
     os.system("cd curl-7.50.1 && make")
     print "sudo make install"
     os.system("cd curl-7.50.1 && sudo make install")
     if os.path.isdir("/usr/local/include/curl")==True:
         os.system("rm -rfv curl-7.50.1")
+        os.system("rm curl-7.50.1.zip")
 def install():
     print("Installing hangman onto system\n");
     print("Creating hangman binary\n");

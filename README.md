@@ -10,8 +10,7 @@ Second, run these commands(This is only if you download your files to your defau
 cd ~/Downloads
 unzip hangman-master.zip
 cd hangman-master
-clang install.c -o install
-./install
+python install.py
 ```
 
 Now you can run

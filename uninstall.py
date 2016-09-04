@@ -1,7 +1,8 @@
 import os
 global Command
 def delete():
-    os.system("rm ./hangman ~/hangman ")
+    os.system("rm -rfv ./hangman ~/hangman ../hangman")
+    os.system("source ~/.bash_profile")
 def scrub():
     rf = open(os.path.expanduser("~")+"/.bash_profile", "r")
     lines = rf.readlines()

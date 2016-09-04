@@ -16,3 +16,8 @@ hangman
 ``` 
 to play!
 
+If you want to delete all files from your system just run
+```bash
+python uninstall.py
+```
+and all files will be gone!

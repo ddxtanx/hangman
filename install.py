@@ -27,7 +27,7 @@ def install():
         print("Creating absolute file locaiton\n");
         os.system("cp ./hangman ~/hangman");
     try:
-        fp = open("~/.bash_profile")
+        fp = open(os.path.expanduser("~")+"/.bash_profile")
         for line in fp.readlines():
             if "hangman" in line:
                 Install = False

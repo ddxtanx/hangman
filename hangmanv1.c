@@ -33,7 +33,7 @@ int random_number(int min_num, int max_num)
   return result;
 }
 int main(void){
-  system("python wordcreate.py");
+  system("python ~/wordcreate.py");
   int wrong = 0;
   int doagain=1;
   do{
@@ -119,7 +119,7 @@ int main(void){
       scanf("%s", ans2);
     if(strcmp(ans2, "y")==0||strcmp(ans2, "Y")==0){
       doagain = 1;
-      system("python wordcreate.py");
+      system("python ~/wordcreate.py");
     } else{
       doagain=0;
     }

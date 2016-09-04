@@ -1,4 +1,5 @@
 import requests
+import os
 def find_between( s, first, last ):
     try:
         start = s.index( first ) + len( first )
@@ -7,7 +8,8 @@ def find_between( s, first, last ):
     except ValueError,e:
         print e
         return ""
-
+if not os.path.isfile("./word.txt"):
+    os.system("touch word.txt definition.txt")
 url = "http://www.randomword.com"
 page = requests.get(url)
 page = page.text.encode('utf8')

@@ -8,6 +8,7 @@ def install():
     if not os.path.isfile(os.path.expanduser("~")+"/hangman"):
         print("Creating absolute file locaiton\n")
         os.system("cp ./hangman ~/hangman")
+        os.system("cp ./wordcreate.py ~/wordcreate.py")
     try:
         fp = open(os.path.expanduser("~")+"/.bash_profile")
         for line in fp.readlines():
@@ -21,13 +22,10 @@ def install():
         Install = True
     if Install:
         print("Adding command to bash_profile\n")
-        os.system("echo 'hangman(){ \n \t~/hangman \n}' >> ~/.bash_profile")
+        os.system("echo 'alias hangman=~/hangman' >> ~/.bash_profile")
         os.system("echo 'echo \"hangman to play hangman \"' >> ~/.bash_profile")
-    if not os.path.isfile("/bin/hangman"):
-        print("Copying to /bin")
-        os.system("sudo cp ./hangman /bin")
+    os.system("source ~/.bash_profile")
     print("Finished!\n")
-    print("Now just restart your console and you will be able to play hangman!")
 def main():
     try:
         import requests

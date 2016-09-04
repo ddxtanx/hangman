@@ -1,5 +1,4 @@
 import os
-import optparse
 global Install
 def cinstall():
     if not(os.path.isfile("./curl-7.50.1.tar.gz")==True) and not(os.path.isdir("./curl-7.50.1")): 

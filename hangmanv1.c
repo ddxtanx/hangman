@@ -3,7 +3,6 @@
 #include <time.h>
 #include <string.h>
 #include <regex.h>
-#include <curl/multi.h>
 
 size_t write_data(void *ptr, size_t size, size_t nmemb, FILE *stream) {
   size_t written = fwrite(ptr, size, nmemb, stream);
@@ -104,37 +103,15 @@ int main(void){
       char ans[1];
       scanf("%s", ans);
     if(strcmp(ans, "y")==0||strcmp(ans, "Y")==0){
-        CURL *curl;
-        FILE *fp;
-        CURLcode curl_res;
-        char *url = concat(concat("www.dictionary.com/browse/", word), "?s=t");
-        char outfilename[FILENAME_MAX] = "def.html";
-        curl = curl_easy_init();
-        if (curl) {
-            fp = fopen(outfilename,"wb");
-            curl_easy_setopt(curl, CURLOPT_URL, url);
-            curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
-            curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
-            curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp);
-            curl_res = curl_easy_perform(curl);
-            /* always cleanup */
-            curl_easy_cleanup(curl);
-            fclose(fp);
-        }
-        else
-        {
-            printf("cURL error.\n");
-        }
-        
-        fp = fopen(outfilename, "r");
-        char buffer[10000];
-        if(fp!=NULL){
-            fread(buffer, 10000, 1, fp);
-        } else{
-            printf("Woops\n");
-        }
+        FILE *df = fopen("definition.txt", "r");
+        int sz1;
+        fseek(df, 0L, SEEK_END);
+        sz1 = ftell(df);
+        rewind(df);
+        char definition[sz+1];
+        fgets(definition, sz1+1, df);
         fclose(fp);
-      system("open 'def.html'");
+        printf("The definition of %s is %s\n", word, definition);
     }
 
     printf("Would you like to play again? (Y for yes, N for no)\n");
